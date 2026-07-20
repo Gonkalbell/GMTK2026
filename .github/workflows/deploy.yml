@@ -1,0 +1,52 @@
+name: Deploy builds
+
+on:
+  workflow_run:
+    workflows: ["godot-ci export"]
+    types: [completed]
+
+# Permissions required to read actions artifacts and deploy pages
+permissions:
+  contents: read
+  actions: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event.workflow_run.conclusion == 'success'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Download `web` artifact from export run
+        uses: actions/download-artifact@v4
+        with:
+          name: web
+          path: build/web
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      - name: Ensure artifact exists
+        run: |
+          if [ ! -d "build/web" ]; then
+            echo "No build/web directory found after downloading artifact." >&2
+            exit 1
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

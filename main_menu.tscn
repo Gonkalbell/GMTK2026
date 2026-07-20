@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c7omfug6o77vj"]
+
+[node name="Node2D" type="Node2D" unique_id=903907952]
+
+[node name="Label" type="Label" parent="." unique_id=362868855]
+offset_right = 238.0
+offset_bottom = 86.0
+text = "Hello GMTK 2026!"
