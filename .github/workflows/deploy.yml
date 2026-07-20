@@ -1,11 +1,11 @@
-name: Deploy builds
+name: deploy builds
 
 on:
   workflow_run:
     workflows: ["godot-ci export"]
     types: [completed]
 
-# Permissions required to read actions artifacts and deploy pages
+# Permissions required to read actions artifacts and deploy
 permissions:
   contents: read
   actions: read
@@ -13,14 +13,14 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "deploy"
   cancel-in-progress: false
 
 jobs:
   deploy:
     if: github.event.workflow_run.conclusion == 'success'
     environment:
-      name: github-pages
+      name: deploy
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
@@ -32,6 +32,22 @@ jobs:
         with:
           name: web
           path: build/web
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      - name: Download `windows` artifact from export run
+        uses: actions/download-artifact@v4
+        with:
+          name: windows
+          path: build/windows
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      - name: Download `linux` artifact from export run
+        uses: actions/download-artifact@v4
+        with:
+          name: linux
+          path: build/linux
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
 
@@ -50,3 +66,17 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+      - name: Install butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip -d butler
+          chmod +x butler/butler
+
+      - name: Push builds to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          butler/butler push build/windows gonkalbell/gmtk-2026:windows
+          butler/butler push build/linux gonkalbell/gmtk-2026:linux
+          butler/butler push build/web gonkalbell/gmtk-2026:html5
