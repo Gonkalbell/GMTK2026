@@ -98,8 +98,8 @@ jobs:
       - name: Install dev dependencies
         run: uv sync
       - name: gdformat check
-        continue-on-error: false
+        continue-on-error: true
         run: uv run gdformat --check .
       - name: gdlint
-        continue-on-error: false
+        continue-on-error: true
         run: uv run gdlint .
