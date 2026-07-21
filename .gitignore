@@ -2,3 +2,9 @@
 .godot/
 /android/
 /export/
+
+# Python tooling (gdtoolkit via uv)
+.venv/
+
+# direnv
+.direnv/
