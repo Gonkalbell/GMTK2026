@@ -17,8 +17,15 @@ config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom="uid://bb6vwl0h1flws"
+theme/custom_font="uid://dgm8b78p6eoak"
 
 [physics]
 
