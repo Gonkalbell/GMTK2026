@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://lkg2wgxyxrvt"]
+
+[ext_resource type="PackedScene" uid="uid://dp3rgqaehb3xu" path="res://addons/maaacks_game_template/base/nodes/menus/options_menu/input/input_options_menu.tscn" id="1_i27v5"]
+[ext_resource type="PackedScene" uid="uid://cl416gdb1fgwr" path="res://addons/maaacks_game_template/base/nodes/menus/options_menu/option_control/slider_option_control.tscn" id="2_2dtis"]
+[ext_resource type="PackedScene" uid="uid://dgesplgu7uii0" path="res://scenes/menus/options_menu/input_icon_mapper.tscn" id="2_hyv0n"]
+
+[node name="Controls" unique_id=294191899 instance=ExtResource("1_i27v5")]
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" parent_id_path=PackedInt32Array(539297323) index="0" unique_id=628948711]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer" index="0" unique_id=1299060273]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="MouseSensitivityControl" parent="VBoxContainer/MarginContainer/VBoxContainer" index="0" unique_id=1557081957 instance=ExtResource("2_2dtis")]
+layout_mode = 2
+option_name = "Mouse Sensitivity"
+option_section = 1
+key = "MouseSensitivity"
+section = "InputSettings"
+
+[node name="OptionLabel" parent="VBoxContainer/MarginContainer/VBoxContainer/MouseSensitivityControl" index="0" unique_id=1854788461]
+text = "Mouse Sensitivity :"
+
+[node name="HSlider" parent="VBoxContainer/MarginContainer/VBoxContainer/MouseSensitivityControl" index="1" unique_id=424108384]
+min_value = 0.25
+max_value = 2.0
+tick_count = 8
+
+[node name="JoypadSensitivityControl" parent="VBoxContainer/MarginContainer/VBoxContainer" index="1" unique_id=35005937 instance=ExtResource("2_2dtis")]
+layout_mode = 2
+option_name = "Joypad Sensitivity"
+option_section = 1
+key = "JoypadSensitivity"
+section = "InputSettings"
+
+[node name="OptionLabel" parent="VBoxContainer/MarginContainer/VBoxContainer/JoypadSensitivityControl" index="0" unique_id=1854788461]
+text = "Joypad Sensitivity :"
+
+[node name="HSlider" parent="VBoxContainer/MarginContainer/VBoxContainer/JoypadSensitivityControl" index="1" unique_id=424108384]
+min_value = 0.25
+max_value = 2.0
+tick_count = 8
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" parent_id_path=PackedInt32Array(539297323) index="1" unique_id=958663042]
+layout_mode = 2
+
+[node name="InputActionsList" parent="VBoxContainer/InputMappingContainer" parent_id_path=PackedInt32Array(1004992485) index="1" unique_id=2089976301 node_paths=PackedStringArray("input_icon_mapper")]
+input_icon_mapper = NodePath("../../../InputIconMapper")
+
+[node name="InputActionsTree" parent="VBoxContainer/InputMappingContainer" parent_id_path=PackedInt32Array(1004992485) index="2" unique_id=780755880 node_paths=PackedStringArray("input_icon_mapper")]
+input_icon_mapper = NodePath("../../../InputIconMapper")
+
+[node name="KeyDeletionConfirmation" parent="." index="1" unique_id=1120617858]
+ignore_siblings = false
+
+[node name="ResetConfirmation" parent="." index="2" unique_id=1967398625]
+ignore_siblings = false
+
+[node name="OneInputMinimumMessage" parent="." index="3" unique_id=1110523665]
+ignore_siblings = false
+
+[node name="AlreadyAssignedMessage" parent="." index="4" unique_id=574954440]
+ignore_siblings = false
+
+[node name="KeyAssignmentWindow" parent="." index="5" unique_id=751125317]
+ignore_siblings = false
+
+[node name="InputIconMapper" parent="." index="6" unique_id=1326793573 instance=ExtResource("2_hyv0n")]
+
+[editable path="VBoxContainer/MarginContainer/VBoxContainer/MouseSensitivityControl"]
+[editable path="VBoxContainer/MarginContainer/VBoxContainer/JoypadSensitivityControl"]
