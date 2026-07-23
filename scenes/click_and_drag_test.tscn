@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cv6yibnndrmmq"]
+
+[ext_resource type="Script" uid="uid://c7kkv3hjp77v" path="res://scripts/click_and_drag.gd" id="1_ebklx"]
+[ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="2_5cr68"]
+[ext_resource type="FontFile" uid="uid://cwejer6fpa2ps" path="res://resources/fonts-DSEG_v046/DSEG14-Classic/DSEG14Classic-Regular.ttf" id="3_5cr68"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvu1f"]
+size = Vector2(128, 128)
+
+[node name="Node2D" type="Node2D" unique_id=329269158]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2079649372]
+position = Vector2(215, 160)
+script = ExtResource("1_ebklx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=628973345]
+shape = SubResource("RectangleShape2D_jvu1f")
+metadata/_edit_lock_ = true
+
+[node name="Icon" type="Sprite2D" parent="Area2D" unique_id=689842962]
+texture = ExtResource("2_5cr68")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Area2D" unique_id=535942641]
+unique_name_in_owner = true
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5cr68")
+theme_override_font_sizes/font_size = 64
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Timer" type="Timer" parent="Area2D" unique_id=475277399]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Node" type="Node" parent="." unique_id=1795694632]
+
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
+[connection signal="mouse_shape_entered" from="Area2D" to="Area2D" method="_on_mouse_shape_entered"]
