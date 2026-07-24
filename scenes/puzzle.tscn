@@ -1,0 +1,62 @@
+[gd_scene format=4 uid="uid://cn2jqkss7xgko"]
+
+[ext_resource type="PackedScene" uid="uid://bw5f1fpc6g7va" path="res://scenes/piece.tscn" id="1_64ty3"]
+[ext_resource type="Texture2D" uid="uid://dwoix474pimbm" path="res://resources/sprites/Puzzle Pack 2/Tiles black/tileBlack_01.png" id="3_5ifmx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4opeh"]
+texture = ExtResource("3_5ifmx")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mvd6p"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_4opeh")
+
+[node name="Puzzle" type="Node2D" unique_id=249849240]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=132871607]
+unique_name_in_owner = true
+position = Vector2(-64, -64)
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAADD+////AAAAAAAAADD+/wAAAAAAAAAAADD+/wEAAAAAAAAAADD+/wIAAAAAAAAAADD///7/AAAAAAAAADD/////AAAAAAAAADD//wAAAAAAAAAAADD//wEAAAAAAAAAADD//wIAAAAAAAAAADAAAP7/AAAAAAAAADAAAP//AAAAAAAAADAAAAAAAAAAAAAAADAAAAEAAAAAAAAAADAAAAIAAAAAAAAAADABAP7/AAAAAAAAADABAP//AAAAAAAAADABAAAAAAAAAAAAADABAAEAAAAAAAAAADABAAIAAAAAAAAAADACAP7/AAAAAAAAADACAP//AAAAAAAAADACAAAAAAAAAAAAADACAAEAAAAAAAAAADACAAIAAAAAAAAAADA=")
+tile_set = SubResource("TileSet_mvd6p")
+
+[node name="Piece" parent="TileMapLayer" unique_id=829006681 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(-68, -197)
+
+[node name="Piece2" parent="TileMapLayer" unique_id=1815131524 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(190, -188)
+
+[node name="Piece3" parent="TileMapLayer" unique_id=606994411 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(319, -65)
+
+[node name="Piece4" parent="TileMapLayer" unique_id=1122139614 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(313, 178)
+
+[node name="Piece5" parent="TileMapLayer" unique_id=154112514 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(201, 318)
+
+[node name="Piece6" parent="TileMapLayer" unique_id=774448937 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(-71, 321)
+
+[node name="Piece7" parent="TileMapLayer" unique_id=756006247 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(-204, 176)
+
+[node name="Piece8" parent="TileMapLayer" unique_id=1574181568 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(-195, -70)
+
+[node name="Piece9" parent="TileMapLayer" unique_id=1095018292 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(-68, 59)
+
+[node name="Piece10" parent="TileMapLayer" unique_id=6258474 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(61, -69)
+
+[node name="Piece11" parent="TileMapLayer" unique_id=106886147 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(184, 63)
+
+[node name="Piece12" parent="TileMapLayer" unique_id=1070958063 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(64, 191)
+
+[node name="Piece13" parent="TileMapLayer" unique_id=924516980 groups=["piece"] instance=ExtResource("1_64ty3")]
+position = Vector2(57, 60)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1456194039]

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bw5f1fpc6g7va"]
+
+[ext_resource type="Script" uid="uid://c7kkv3hjp77v" path="res://scenes/piece.gd" id="1_h2rng"]
+[ext_resource type="Texture2D" uid="uid://1l5j7kq5ki3i" path="res://resources/sprites/Puzzle Pack 2/Tiles blue/tileBlue_39.png" id="2_m0mde"]
+[ext_resource type="FontFile" uid="uid://cwejer6fpa2ps" path="res://resources/fonts/fonts-DSEG_v046/DSEG14-Classic/DSEG14Classic-Regular.ttf" id="3_ic7ih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvu1f"]
+size = Vector2(128, 128)
+
+[node name="Piece" type="Area2D" unique_id=829006681 groups=["pieces"]]
+script = ExtResource("1_h2rng")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=49355603]
+unique_name_in_owner = true
+texture = ExtResource("2_m0mde")
+
+[node name="Label" type="Label" parent="Sprite2D" unique_id=2010492790]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -118.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ic7ih")
+theme_override_font_sizes/font_size = 48
+text = "XX"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2103536501]
+shape = SubResource("RectangleShape2D_jvu1f")
+
+[node name="Timer" type="Timer" parent="." unique_id=459631178]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

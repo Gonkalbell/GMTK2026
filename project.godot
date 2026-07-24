@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2026"
-run/main_scene="uid://cv6yibnndrmmq"
+run/main_scene="uid://cn2jqkss7xgko"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,10 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[global_group]
+
+pieces=""
 
 [gui]
 
