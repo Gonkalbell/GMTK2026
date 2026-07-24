@@ -18,9 +18,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if %Timer.paused:
-		%Label.text = "XX"
+		%Label.text = "X"
 	else:
-		%Label.text = "%02d" % floorf(%Timer.time_left)
+		%Label.text = "%01d" % floorf(%Timer.time_left)
 
 
 func _on_mouse_entered():

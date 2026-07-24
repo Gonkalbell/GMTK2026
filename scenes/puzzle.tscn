@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cn2jqkss7xgko"]
 
 [ext_resource type="PackedScene" uid="uid://bw5f1fpc6g7va" path="res://scenes/piece.tscn" id="1_64ty3"]
+[ext_resource type="Texture2D" uid="uid://5anlw48a5y6f" path="res://resources/sprites/New Platformer Pack/bomb.png" id="3_3asjn"]
 [ext_resource type="Texture2D" uid="uid://dwoix474pimbm" path="res://resources/sprites/Puzzle Pack 2/Tiles black/tileBlack_01.png" id="3_5ifmx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4opeh"]
@@ -9,6 +10,7 @@ texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_mvd6p"]
+tile_shape = 2
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_4opeh")
 
@@ -60,3 +62,7 @@ position = Vector2(64, 191)
 position = Vector2(57, 60)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1456194039]
+
+[node name="Bomb" type="Sprite2D" parent="." unique_id=1953887323]
+position = Vector2(719, -180)
+texture = ExtResource("3_3asjn")

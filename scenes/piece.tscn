@@ -1,8 +1,37 @@
 [gd_scene format=3 uid="uid://bw5f1fpc6g7va"]
 
 [ext_resource type="Script" uid="uid://c7kkv3hjp77v" path="res://scenes/piece.gd" id="1_h2rng"]
-[ext_resource type="Texture2D" uid="uid://1l5j7kq5ki3i" path="res://resources/sprites/Puzzle Pack 2/Tiles blue/tileBlue_39.png" id="2_m0mde"]
+[ext_resource type="Texture2D" uid="uid://5anlw48a5y6f" path="res://resources/sprites/New Platformer Pack/bomb.png" id="2_h2rng"]
 [ext_resource type="FontFile" uid="uid://cwejer6fpa2ps" path="res://resources/fonts/fonts-DSEG_v046/DSEG14-Classic/DSEG14Classic-Regular.ttf" id="3_ic7ih"]
+[ext_resource type="Texture2D" uid="uid://wdps4l8rlm17" path="res://resources/sprites/Particle Pack/flame_05.png" id="4_m0mde"]
+
+[sub_resource type="Gradient" id="Gradient_ic7ih"]
+offsets = PackedFloat32Array(0, 0.33, 0.66, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vwn8p"]
+gradient = SubResource("Gradient_ic7ih")
+
+[sub_resource type="Curve" id="Curve_al1la"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uxdtq"]
+curve = SubResource("Curve_al1la")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jvu1f"]
+particle_flag_disable_z = true
+angle_min = 40.00001
+angle_max = 80.000015
+direction = Vector3(-0.5, -0.25, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.14999999
+scale_max = 0.14999999
+scale_curve = SubResource("CurveTexture_uxdtq")
+color_ramp = SubResource("GradientTexture1D_vwn8p")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvu1f"]
 size = Vector2(128, 128)
@@ -10,9 +39,16 @@ size = Vector2(128, 128)
 [node name="Piece" type="Area2D" unique_id=829006681 groups=["pieces"]]
 script = ExtResource("1_h2rng")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=789355974]
+visible = false
+position = Vector2(-60, -36)
+texture = ExtResource("4_m0mde")
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_jvu1f")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=49355603]
 unique_name_in_owner = true
-texture = ExtResource("2_m0mde")
+texture = ExtResource("2_h2rng")
 
 [node name="Label" type="Label" parent="Sprite2D" unique_id=2010492790]
 unique_name_in_owner = true
@@ -31,7 +67,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ic7ih")
 theme_override_font_sizes/font_size = 48
-text = "XX"
+text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 text_overrun_behavior = 1
